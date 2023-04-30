@@ -4,4 +4,8 @@ git commit #to commit tracked files
 
 git push origin <branch-name> # to push changes from local to remote repository 
 
+git fetch #to see remote repository changes to local github workspace 
+
+git pull origin <branch-name> #To merge remote repository changes to local github workspace
+
 
