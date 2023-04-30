@@ -4,8 +4,12 @@ git commit #to commit tracked files
 
 git push origin <branch-name> # to push changes from local to remote repository 
 
-git fetch #to see remote repository changes to local github workspace 
+git fetch #fetchs the remote repo changes but it won't merge with local workspace 
 
-git pull origin <branch-name> #To merge remote repository changes to local github workspace
+git pull origin <branch-name> #Fetchs remote repo changes and it will merge with local workspace chagnes
+
+git fetch vs pull 
+
+git merge 
 
 
