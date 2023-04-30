@@ -1,6 +1,13 @@
-git add #to add untrack files 
+How to create/initialize local repository and add back to remote ?
+mkdir reposiroty-folder-name 
+cd reposiroty-folder-name
+git init        #to initialize the git repo it will create .git foler
+git remote add reposiroty-folder-name https://github.com/kkc987  #this will add local repository to remote
 
-git commit #to commit tracked files
+
+git add         #to add untrack files 
+
+git commit      #to commit tracked files
 
 git push origin <branch-name> # to push changes from local to remote repository 
 
@@ -9,9 +16,79 @@ git fetch #fetchs the remote repo changes but it won't merge with local workspac
 git pull origin <branch-name> #Fetchs remote repo changes and it will merge with local workspace chagnes
 
 git fetch vs pull 
+git fetch fetches updates but does not merge them.
+git pull does a git fetch under the hood and then a merge.
 
 git merge 
+ex:
+  create emergency-fix branch from prod branch
+  git checkout prod            #I want to create emergency-fix branch from prod so switched to prod branch using checkout command 
+  git branch emergency-fix     #create emergency-fix branch from prod
+  git checkout emergency-fix   #switch to emergency-fix branch and do necessary code changes
+  git checkout prod            #once after code changes in emergency-fix branch move to prod 
+  git merge emergency-fix      #merging emergency-fix branch with production branch 
+  git push origin prod         #pushing emergency-fix merge changes from local prod branch to remote prod branch
+  git branch -d emergency-fix  #once after merging emergency-fix changes into prod we are deleting emergency-fix branch in local
+  git push origin -d emergency-fix #deleting same branch in remote which already deleted in local
+
+git rebase
+ex:
+  git checkout qa 
+  git rebase develop 
+
+git merge vs rebase
+If you want to see the history completely same as it happened, you should use merge. Merge preserves history whereas rebase rewrites it.
+Merging adds a new commit to your history
+Rebasing is better to streamline a complex history, you are able to change the commit history by interactive rebase.
+
+git tag 
+ex:
+  git checkout emergency-fix
+  git tag <version-name>     #crating backup for emergency-fix branch before deleting
+  git push --tags            #pushing local tags to remote repository
+  git tag                    #to list available tags 
+  
+  git tag -d v1.0.0                  #to delete tag in local workspace 
+  git push origin --delete v1.0.0    #To delete tag in remote repository
 
 
-added git commands and testing merge conflicts issues
-added git commands not tested
+git reset --hard <specific-commit-id>  #this will revert code changes to specific commit id & deletes commit id history as well 
+ex:
+  git checkout qa 
+  git reset --hard commitid-2
+  git push origin qa    #it will fail since there is no forceful 
+  git push -f origin qa #we are updating remote branch with reverting chagnes -f means forceful
+
+git revert 
+ex:
+  git revert commit-id  #this will revert specific commit id code changes and it will create new commit id for reverting purpose 
+  git push origing qa   #to push revert code changes to remote branch 
+  
+git cherry-pick #if you want to move specific commit from one branch to another branch (develop to qa)
+ex:
+  git checkout qa
+  git cherry-pick <develop-branch-commit-id>
+  git push origin qa
+
+git stash  #if you want to work on multiple branch and to move one branch to another branch without commiting ur chagnes in any branch
+ex:
+  git checkout develop 
+  vi github-command  #change the code 
+  git checkout qa    # this will not allow you to move qa branch since you have not committed develop branch chagnes 
+  git stash          # now you have done stash the commit changes and it will allow you to switch qa branch 
+  git checkout qa 
+
+  git stash list       #to list stash content (To access stashed chagnes)
+  git apply pop        #to for applying just the first stash
+  git apply stash@{2}  #apply a particular stash no from stash list:
+  
+git squash     #combine multiple commits into commit id
+
+git diff      #To see difference between two branchs
+ex:
+  git checkout qa 
+  git diff develop   #here you are checking difference between develop and qa branches
+
+git branching strategies 
+
+git cosole changes 
