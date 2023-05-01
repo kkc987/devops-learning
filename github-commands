@@ -89,6 +89,11 @@ ex:
   git checkout qa 
   git diff develop   #here you are checking difference between develop and qa branches
 
-git branching strategies 
+git branching strategies
+ - our branching strategies follows 4 standard branches i.e., develop, qa, uat & prod.
+ - development team will create feature branch from develop branch i.e., HP-1301 and they will develop the code in their local system. 
+ - Once after their development completed they will push code to remote branch of HP-1301
+ - Finally, they will raise PULL REQUEST (PR) from feature branch HP-1301 branch to develop branch and they will assign reviewers to review my code changes. 
+
 
 git cosole changes 
