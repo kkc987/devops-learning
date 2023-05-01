@@ -90,10 +90,37 @@ ex:
   git diff develop   #here you are checking difference between develop and qa branches
 
 git branching strategies
+
+Branch                              Environment 
+feature branch from develop 
+develop branch will deploy on       Dev
+qa                                  QA
+UAT                                 UAT
+Prod                                production
+
  - our branching strategies follows 4 standard branches i.e., develop, qa, uat & prod.
  - development team will create feature branch from develop branch i.e., HP-1301 and they will develop the code in their local system. 
- - Once after their development completed they will push code to remote branch of HP-1301
- - Finally, they will raise PULL REQUEST (PR) from feature branch HP-1301 branch to develop branch and they will assign reviewers to review my code changes. 
+ - Once after their development completed they will raise PULL REQUEST (PR) from feature branch HP-1301  to develop branch and they will assign reviewers to review code changes.
+ - Once after reviewer approval 
+ - dev team will merge the feature branch with develop branch and deploy to development environment.
+
+ - Once after developers request, DevOps team will move same develop branch changes to qa branch. 
+ - and devops team will deploy qa branch on qa environment.  .
+
+ - Once after QA team sign on qa testing. 
+
+ - Devops team will move qa branch changes to UAT branch and from their UAT branch will deploy to UAT environment
+
+ - Once after business approval on UAT testing, Client will give sign-off for production deployment
+
+ - Devops team will move code changes from UAT to PROD branch. 
+
+ - Once UAT code is available on PROD branch, devops team will deploy prod branch on Production environment
+ 
+ - Once after production deployment, QA team will do sanity test on live (production) environment and they will provide sign-off. 
 
 
 git cosole changes 
+- Providing read/write access to whole team 
+- Creating branch protection rules
+- Creating branching strategy and explaining to dev team
